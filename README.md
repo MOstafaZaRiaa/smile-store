@@ -1,16 +1,42 @@
-# ecommerce_app
+# E-Commerce Complete App - Flutter Firebase Using Get-x
 
-A new Flutter project.
+That is a complete e-commerce app.
+we show you how you can create a nice
+clean architecture and clean design for your e-commerce app that can
+run both Android and iOS devices because it builds with flutter.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+### Video Preview of Final UI
 
-A few resources to get you started if this is your first Flutter project:
+![Preview](/intro.gif)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Screens it contains:
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+-> Splash
+
+-> Login
+
+-> Forgot Password
+
+-> Sign Up
+
+-> Complete Profile
+
+-> Home Page
+
+-> Product Details
+
+-> Cart
+
+-> Order
+
+-> Profile
+
+-> Bottom Navigation Bar
+
+## Photos
+![Preview](/Auth.png)
+![Preview](Account.png)
+![Preview](Cart.png)
+![Preview](Home.png)
+![Preview](CheckOut.png)
