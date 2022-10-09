@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/view/category_screen.dart';
+import 'package:ecommerce_app/view/search_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -18,10 +19,20 @@ class HomePage extends StatelessWidget {
     return GetBuilder<HomeViewModel>(
       init: HomeViewModel(),
       builder: (controller) => RefreshIndicator(
+        color: primaryColor,
         onRefresh: () {
           return HomeViewModel().getProducts();
         },
         child: Scaffold(
+          appBar: AppBar(
+            title: const Text('E-commerce',style: TextStyle(color: Colors.black),),
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+            centerTitle: true,
+            elevation: 0,
+            actions: [
+              IconButton(onPressed: (){Get.to(() => const SearchScreen());}, icon: const Icon(Icons.search_rounded,color: Colors.black,))
+            ],
+          ),
           body: controller.isLoading.value
               ? const Center(
                   child: CircularProgressIndicator(),
@@ -35,13 +46,7 @@ class HomePage extends StatelessWidget {
                     ),
                     child: Column(
                       children: [
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        _searchTextFormField(),
-                        const SizedBox(
-                          height: 30,
-                        ),
+                        // _searchTextFormField(),
                         const CustomText(
                           text: 'Categories',
                           color: Colors.black,
@@ -65,7 +70,9 @@ class HomePage extends StatelessWidget {
                             InkWell(
                               onTap: () {
                                 //TODO:see all button
-                                Get.to(()=>BestSellingScreen(products: controller.products,));
+                                Get.to(() => BestSellingScreen(
+                                      products: controller.products,
+                                    ));
                               },
                               child: const CustomText(
                                 text: 'See all',
@@ -95,7 +102,10 @@ class HomePage extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
       ),
       child: TextFormField(
-        decoration:const InputDecoration(
+        onTap: () {
+          Get.to(() => SearchScreen());
+        },
+        decoration: const InputDecoration(
           prefixIcon: Icon(
             Icons.search_sharp,
             color: Colors.black,
@@ -120,8 +130,10 @@ class HomePage extends StatelessWidget {
             return Column(
               children: [
                 InkWell(
-                  onTap: (){
-                    Get.to(()=>CategoryScreen(title: controller.categories[index].name,));
+                  onTap: () {
+                    Get.to(() => CategoryScreen(
+                          title: controller.categories[index].name,
+                        ));
                   },
                   child: Container(
                     height: 60,
@@ -152,7 +164,7 @@ class HomePage extends StatelessWidget {
 
   Widget _productsListView() {
     return GetBuilder<HomeViewModel>(
-      builder: (controller) =>  SizedBox(
+      builder: (controller) => SizedBox(
         height: 350,
         child: ListView.separated(
           scrollDirection: Axis.horizontal,
@@ -219,3 +231,25 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
+
+// AppBar(
+// toolbarHeight: 50,
+// centerTitle: true,
+// title: const CustomText(
+// text: "Ecommerce",
+// fontSize: 18.0,
+// color: Colors.black,
+// ),
+// backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+// elevation: 0,
+// actions: [
+// IconButton(
+// onPressed: () {},
+// icon: Icon(
+// Icons.search_sharp,
+// color: Colors.black,
+// ),
+// ),
+// ],
+// )

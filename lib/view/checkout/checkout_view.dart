@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-
 import 'package:ecommerce_app/core/view_model/checkout_view_model.dart';
 import 'package:ecommerce_app/view/widgets/custom_button.dart';
 import 'package:ecommerce_app/helper/enum.dart';
@@ -12,7 +11,6 @@ import '../widgets/custom_stepper.dart';
 import 'add_address_widget.dart';
 import 'delivery_time_widget.dart';
 import 'summary_widget.dart';
-
 
 class CheckoutView extends StatefulWidget {
   @override
@@ -80,8 +78,14 @@ class _CheckoutViewState extends State<CheckoutView> {
                           controller.changeIndex(controller.index + 1);
                         } else {
                           controller.clearCart();
-                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>ControlView()));
-                         //Get.offAll(ControlView());
+                          Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ControlView(),
+                            ),
+                            (Route<dynamic> route) => false,
+                          );
+                          //Get.offAll(ControlView());
                         }
                       },
                     ),

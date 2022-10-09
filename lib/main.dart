@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'E-Commerce App',
+      debugShowCheckedModeBanner: false,
       initialBinding: Binding(),
       home: ControlView(),
     );

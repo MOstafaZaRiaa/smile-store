@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/view_model/cart_view_model.dart';
 import 'package:ecommerce_app/core/view_model/checkout_view_model.dart';
 import 'package:flutter/material.dart';
 
@@ -8,8 +9,6 @@ import 'package:ecommerce_app/helper/enum.dart';
 import 'package:ecommerce_app/view/control_view.dart';
 
 import '../database/cart_database_helper.dart';
-import 'cart_view_model.dart';
-import 'checkout_view_model.dart';
 import 'control_view_model.dart';
 
 class CheckOutViewModel extends GetxController {
@@ -23,9 +22,8 @@ class CheckOutViewModel extends GetxController {
 
   var dbHelper = CartDatabaseHelper.db;
 
-  var controlViewModel = ControlViewModel.controlViewModel;
-
   GlobalKey<FormState> formState = GlobalKey();
+  ControlViewModel controlViewModel = ControlViewModel();
 
   late String street1, street2, city, state, country;
 
@@ -62,7 +60,8 @@ class CheckOutViewModel extends GetxController {
 
   clearCart()async{
     await dbHelper.clearCart();
-    controlViewModel.changeSelectedValue(0);
+    Get.delete<ControlViewModel>();
+    Get.delete<CartViewModel>();
     update();
   }
 }
