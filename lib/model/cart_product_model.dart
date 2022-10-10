@@ -19,7 +19,7 @@ class CartProductModel {
     quantity = map['quantity'];
     productId = map['productId'];
   }
-  toJson() {
+  Map<String, dynamic> toJson() {
     return {
       'name': name,
       'price': price,

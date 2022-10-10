@@ -18,7 +18,7 @@ class CartScreen extends StatelessWidget {
           ? const Center(
               child: CircularProgressIndicator(),
             )
-          : controller.cartProductModel.isEmpty
+          : controller.allCartProducts.isEmpty
               ? Center(
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
@@ -40,7 +40,7 @@ class CartScreen extends StatelessWidget {
                             top: 15,
                           ),
                           child: ListView.separated(
-                            itemCount: controller.cartProductModel.length,
+                            itemCount: controller.allCartProducts.length,
                             separatorBuilder:
                                 (BuildContext context, int index) => const SizedBox(
                               height: 15,
@@ -49,11 +49,11 @@ class CartScreen extends StatelessWidget {
                                 Dismissible(
                               direction: DismissDirection.endToStart,
                               key: Key(
-                                controller.cartProductModel[index].productId!,
+                                controller.allCartProducts[index].productId!,
                               ),
                               onDismissed: (dismissDirection) {
                                 controller.deleteProduct(
-                                    controller.cartProductModel[index],
+                                    controller.allCartProducts[index],
                                     context);
                               },
                               background: Container(
@@ -86,7 +86,7 @@ class CartScreen extends StatelessWidget {
                                         image: DecorationImage(
                                           image: NetworkImage(
                                             controller
-                                                .cartProductModel[index].image!,
+                                                .allCartProducts[index].image!,
                                           ),
                                         ),
                                         borderRadius: BorderRadius.only(
@@ -104,7 +104,7 @@ class CartScreen extends StatelessWidget {
                                       children: [
                                         CustomText(
                                           text: controller
-                                              .cartProductModel[index].name,
+                                              .allCartProducts[index].name,
                                           fontSize: 16.0,
                                         ),
                                         SizedBox(
@@ -112,7 +112,7 @@ class CartScreen extends StatelessWidget {
                                         ),
                                         CustomText(
                                           text:
-                                              '\$${controller.cartProductModel[index].price.toString()}',
+                                              '\$${controller.allCartProducts[index].price.toString()}',
                                           fontSize: 16.0,
                                           color: primaryColor,
                                         ),
@@ -146,7 +146,7 @@ class CartScreen extends StatelessWidget {
                                               ),
                                               CustomText(
                                                 text: controller
-                                                    .cartProductModel[index]
+                                                    .allCartProducts[index]
                                                     .quantity
                                                     .toString(),
                                                 alignment: Alignment.center,

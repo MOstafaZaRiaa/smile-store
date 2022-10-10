@@ -1,8 +1,10 @@
 import 'package:ecommerce_app/model/cart_product_model.dart';
-
+import 'package:flutter/material.dart';
 class OrderModel {
+
   String? userId, timeDate;
   Address? address;
+  var totalPrice;
   List<CartProductModel>? products;
 
   OrderModel({
@@ -10,14 +12,16 @@ class OrderModel {
     this.timeDate,
     this.address,
     this.products,
+    this.totalPrice,
   });
 
   factory OrderModel.fromMap(Map<String, dynamic> map) {
-    return new OrderModel(
+    return OrderModel(
       userId: map['userId'],
       timeDate: map['timeDate'],
       address: map['address'],
       products: map['products'],
+      totalPrice: map['totalPrice'],
     );
   }
 
@@ -27,6 +31,7 @@ class OrderModel {
       'timeDate': this.timeDate,
       'address': this.address,
       'products': this.products,
+      'totalPrice': this.products,
     };
   }
 }

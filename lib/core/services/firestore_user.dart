@@ -10,6 +10,9 @@ import 'package:ecommerce_app/model/user_model.dart';
 class FireStoreUser {
   final CollectionReference _userCollectionRef =
       FirebaseFirestore.instance.collection('users');
+  final CollectionReference _userOrders =
+  FirebaseFirestore.instance.collection('orders');
+
 
   final auth = FirebaseAuth.instance.currentUser;
 
@@ -19,6 +22,12 @@ class FireStoreUser {
     return await _userCollectionRef.doc(userModel.userId).set(
           userModel.toJson(),
         );
+  }
+
+  initializeUserCart(UserModel userModel){
+    _userOrders.doc(userModel.userId).set({
+      'orders': [],
+    });
   }
 
   Future<DocumentSnapshot> getCurrentUser(String uid)async{

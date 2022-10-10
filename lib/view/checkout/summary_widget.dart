@@ -36,7 +36,7 @@ class Summary extends StatelessWidget {
                                 width: MediaQuery.of(context).size.width * .4,
                                 child: Image(
                                   image: NetworkImage(
-                                    controller.cartProductModel[index].image!,
+                                    controller.allCartProducts[index].image!,
                                   ),
                                   fit: BoxFit.cover,
                                 ),
@@ -45,7 +45,7 @@ class Summary extends StatelessWidget {
                                 height: 10,
                               ),
                               CustomText(
-                                text: controller.cartProductModel[index].name,
+                                text: controller.allCartProducts[index].name,
                                 fontSize: 16.0,
                                 // maxLine: 1,
                               ),
@@ -54,7 +54,7 @@ class Summary extends StatelessWidget {
                               ),
                               CustomText(
                                 text:
-                                    '\$${controller.cartProductModel[index].price.toString()}',
+                                    '\$${controller.allCartProducts[index].price.toString()}',
                                 fontSize: 16.0,
                                 color: primaryColor,
                               ),
@@ -65,7 +65,7 @@ class Summary extends StatelessWidget {
                           width: 15,
                         );
                       },
-                      itemCount: controller.cartProductModel.length),
+                      itemCount: controller.allCartProducts.length),
                 ),
               ),
             ),

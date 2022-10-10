@@ -47,7 +47,7 @@ class CartDatabaseHelper {
     );
   }
 
-  Future<List<CartProductModel>> getAllProduct() async {
+  Future<List<CartProductModel>> getAllCartProducts() async {
     var dbClient = await database;
     List<Map> maps = await dbClient!.query(tableCartProduct);
     List<CartProductModel> list = maps.isEmpty

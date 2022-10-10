@@ -49,6 +49,7 @@ dependencies:
   flutter_svg: ^0.22.0
   image_picker: ^0.8.2
   firebase_image: ^1.1.1
+  toast: ^0.3.0
 
 dev_dependencies:
   flutter_test:

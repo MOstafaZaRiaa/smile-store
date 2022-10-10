@@ -77,15 +77,11 @@ class _CheckoutViewState extends State<CheckoutView> {
                         if (controller.index < 2) {
                           controller.changeIndex(controller.index + 1);
                         } else {
-                          controller.clearCart();
-                          Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ControlView(),
-                            ),
-                            (Route<dynamic> route) => false,
-                          );
-                          //Get.offAll(ControlView());
+                          controller.placeOrder().then((value) {
+                            controller.clearCart();
+                            Get.offAll(ControlView());
+                          });
+
                         }
                       },
                     ),

@@ -193,6 +193,7 @@ class AuthViewModel extends GetxController {
             setUser(userModel),
           },
         );
+    await FireStoreUser().initializeUserCart(userModel);
     update();
   }
 

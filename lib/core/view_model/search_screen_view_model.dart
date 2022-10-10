@@ -10,7 +10,6 @@ class SearchScreenViewModel extends GetxController {
   List<ProductModel> get searchedProducts => _searchedProducts;
 
   List<ProductModel> _allProducts = [];
-
   final searchTextController = TextEditingController();
 
   SearchScreenViewModel() {
