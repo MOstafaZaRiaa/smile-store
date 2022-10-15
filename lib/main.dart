@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/view/control_view.dart';
 import 'package:ecommerce_app/view/profile_screen/orders/orders_history_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
       title: 'E-Commerce App',
       debugShowCheckedModeBanner: false,
       initialBinding: Binding(),
-      home: const OrdersHistoryScreen(),
+      home: const ControlView(),
     );
   }
 }
