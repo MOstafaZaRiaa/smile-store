@@ -10,6 +10,7 @@ import '../control_view.dart';
 import '../widgets/custom_stepper.dart';
 import 'add_address_widget.dart';
 import 'delivery_time_widget.dart';
+import 'order_is_placed.dart';
 import 'summary_widget.dart';
 
 class CheckoutView extends StatefulWidget {
@@ -79,7 +80,15 @@ class _CheckoutViewState extends State<CheckoutView> {
                         } else {
                           controller.placeOrder().then((value) {
                             controller.clearCart();
-                            Get.offAll(ControlView());
+
+                            Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => OrderIsPlaced(),
+                              ),
+                                  (Route<dynamic> route) => false,
+                            );
+                            // Get.offAll(ControlView());
                           });
 
                         }

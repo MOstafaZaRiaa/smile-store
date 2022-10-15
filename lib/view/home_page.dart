@@ -21,7 +21,7 @@ class HomePage extends StatelessWidget {
       builder: (controller) => RefreshIndicator(
         color: primaryColor,
         onRefresh: () {
-          return HomeViewModel().getProducts();
+          return HomeViewModel().onRefresh();
         },
         child: Scaffold(
           appBar: AppBar(
@@ -33,7 +33,7 @@ class HomePage extends StatelessWidget {
               IconButton(onPressed: (){Get.to(() => const SearchScreen());}, icon: const Icon(Icons.search_rounded,color: Colors.black,))
             ],
           ),
-          body: controller.isLoading.value
+          body: controller.products.isEmpty
               ? const Center(
                   child: CircularProgressIndicator(),
                 )
@@ -94,27 +94,6 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Container _searchTextFormField() {
-    return Container(
-      width: double.infinity,
-      decoration: BoxDecoration(
-        color: Colors.grey.shade100,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: TextFormField(
-        onTap: () {
-          Get.to(() => SearchScreen());
-        },
-        decoration: const InputDecoration(
-          prefixIcon: Icon(
-            Icons.search_sharp,
-            color: Colors.black,
-          ),
-          border: InputBorder.none,
-        ),
-      ),
-    );
-  }
 
   Widget _categoriesListView() {
     return GetBuilder<HomeViewModel>(
@@ -231,25 +210,3 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-
-
-// AppBar(
-// toolbarHeight: 50,
-// centerTitle: true,
-// title: const CustomText(
-// text: "Ecommerce",
-// fontSize: 18.0,
-// color: Colors.black,
-// ),
-// backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-// elevation: 0,
-// actions: [
-// IconButton(
-// onPressed: () {},
-// icon: Icon(
-// Icons.search_sharp,
-// color: Colors.black,
-// ),
-// ),
-// ],
-// )

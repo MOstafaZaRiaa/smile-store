@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/view/profile_screen/orders/orders_history_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -5,7 +6,6 @@ import 'package:toast/toast.dart';
 import 'helper/binding.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-import 'package:ecommerce_app/view/control_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       title: 'E-Commerce App',
       debugShowCheckedModeBanner: false,
       initialBinding: Binding(),
-      home: ControlView(),
+      home: const OrdersHistoryScreen(),
     );
   }
 }

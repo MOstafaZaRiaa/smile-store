@@ -7,7 +7,11 @@ import 'package:get/get.dart';
 import 'package:ecommerce_app/core/view_model/profile_view_model.dart';
 import 'package:ecommerce_app/view/widgets/custom_text.dart';
 
+import '../../core/view_model/orders_history_view_model.dart';
+
 class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<ProfileViewModel>(
@@ -18,7 +22,7 @@ class ProfileScreen extends StatelessWidget {
                 child: CircularProgressIndicator(),
               )
             : Scaffold(
-              body: Padding(
+                body: Padding(
                   padding: const EdgeInsets.only(
                     top: 50,
                     right: 20,
@@ -28,13 +32,14 @@ class ProfileScreen extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        UserInfo(controller: controller,),
+                        UserInfo(
+                          controller: controller,
+                        ),
                         const SizedBox(
                           height: 50,
                         ),
                         MenuListTile(
-                          iconPath:
-                              'assets/menu_icons/Icon_Edit-Profile.png',
+                          iconPath: 'assets/menu_icons/Icon_Edit-Profile.png',
                           tileText: 'Edit Profile',
                           onPressed: () {
                             Get.to(() => EditProfileScreen());
@@ -50,7 +55,12 @@ class ProfileScreen extends StatelessWidget {
                         MenuListTile(
                           iconPath: 'assets/menu_icons/Icon_History.png',
                           tileText: 'Order History',
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.lazyPut(() => OrdersHistoryViewModel());
+                            final cartViewModel =
+                                Get.find<OrdersHistoryViewModel>();
+                            cartViewModel.getOrderData();
+                          },
                         ),
                         MenuListTile(
                           iconPath: 'assets/menu_icons/Icon_Payment.png',
@@ -73,7 +83,7 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-            ),
+              ),
       ),
     );
   }
@@ -82,7 +92,8 @@ class ProfileScreen extends StatelessWidget {
 class UserInfo extends StatelessWidget {
   final ProfileViewModel controller;
   const UserInfo({
-    Key? key, required this.controller,
+    Key? key,
+    required this.controller,
   }) : super(key: key);
 
   @override

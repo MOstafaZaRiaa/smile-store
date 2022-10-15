@@ -116,6 +116,7 @@ class ProfileViewModel extends GetxController {
   //   update();
   // }
   clearCartFromProducts(){
+
     dbHelper.clearCart();
   }
 

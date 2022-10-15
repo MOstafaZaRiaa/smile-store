@@ -26,6 +26,7 @@ class CustomText extends StatelessWidget {
       child: Text(
         text,
         maxLines: maxLine,
+        softWrap: true,
         style: TextStyle(
           color: color,
           height: height,

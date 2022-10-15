@@ -10,6 +10,8 @@ import 'package:ecommerce_app/helper/local_storage_data.dart';
 import 'package:ecommerce_app/core/view_model/checkout_view_model.dart';
 import 'package:ecommerce_app/core/view_model/address_view_model.dart';
 
+import '../core/view_model/orders_history_view_model.dart';
+
 class Binding extends Bindings {
   @override
   void dependencies() {
@@ -21,6 +23,9 @@ class Binding extends Bindings {
     );
     Get.lazyPut(
       () => HomeViewModel(),
+    );
+    Get.lazyPut(
+      () => OrdersHistoryViewModel(),
     );
     Get.lazyPut(
       () => CartViewModel(),

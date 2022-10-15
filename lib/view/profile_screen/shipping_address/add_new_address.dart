@@ -24,7 +24,7 @@ class AddNewAddress extends StatelessWidget {
             Get.back();
           },
         ),
-        title: CustomText(
+        title: const CustomText(
           text: 'Shipping Address',
           color: Colors.black,
         ),

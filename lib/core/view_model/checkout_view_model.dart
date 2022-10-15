@@ -75,7 +75,7 @@ class CheckOutViewModel extends GetxController {
     final cartViewModel = Get.find<CartViewModel>();
     final userId = FirebaseAuth.instance.currentUser!.uid;
     final timeNow = DateTime.now().toIso8601String().toString();
-    final allCartProducts = cartViewModel.allCartProducts;
+    final allCartProducts =cartViewModel.allCartProducts;
     final totalPrice = cartViewModel.totalPrice;
 
     final newOrder = OrderModel(
@@ -89,10 +89,22 @@ class CheckOutViewModel extends GetxController {
     update();
   }
 
+  List<Map<String,String>> storeOrderNameAndPriceOnly(products){
+    List<Map<String,String>> productsNameAndPrice = [];
+    for(int i=0 ; i<products!.length;i++){
+      productsNameAndPrice.add({
+        'productName': '${products![i].name}',
+        'productPrice': '${products![i].price}',
+      });
+    }
+    return productsNameAndPrice;
+  }
+
+
   clearCart()async{
     await dbHelper.clearCart();
     Get.delete<ControlViewModel>();
-    Get.delete<CartProductModel>();
+    Get.delete<CartViewModel>();
     update();
   }
 }

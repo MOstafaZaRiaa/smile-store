@@ -22,6 +22,12 @@ class HomeViewModel extends GetxController {
     update();
   }
 
+  onRefresh(){
+    getCategory();
+    getProducts();
+    update();
+  }
+
   getCategory() async {
     _isLoading.value = true;
     HomeServices().getCategories().then((categoriesDocs) {

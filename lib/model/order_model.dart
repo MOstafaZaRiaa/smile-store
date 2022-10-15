@@ -2,38 +2,45 @@ import 'package:ecommerce_app/model/cart_product_model.dart';
 import 'package:flutter/material.dart';
 class OrderModel {
 
-  String? userId, timeDate;
+  String? userId, timeDate,orderNo;
   Address? address;
   var totalPrice;
   List<CartProductModel>? products;
 
   OrderModel({
     this.userId,
+    this.orderNo,
     this.timeDate,
     this.address,
     this.products,
     this.totalPrice,
   });
 
-  factory OrderModel.fromMap(Map<String, dynamic> map) {
-    return OrderModel(
-      userId: map['userId'],
-      timeDate: map['timeDate'],
-      address: map['address'],
-      products: map['products'],
-      totalPrice: map['totalPrice'],
-    );
+  OrderModel.fromJson(Map<dynamic,dynamic>?map){
+    if(map == null){
+      return;
+    }
+    timeDate=map['timeDate'];
+    orderNo=map['orderNo'];
+    address=map['address'];
+    userId=map['userId'];
+    totalPrice=map['totalPrice'];
+    products=map['products'];
   }
 
-  Map<String, dynamic> toMap() {
+
+
+  Map<String, dynamic> toJson() {
     return {
       'userId': this.userId,
+      'orderNo': this.orderNo,
       'timeDate': this.timeDate,
       'address': this.address,
       'products': this.products,
-      'totalPrice': this.products,
+      'totalPrice': this.totalPrice,
     };
   }
+
 }
 
 class Address {
