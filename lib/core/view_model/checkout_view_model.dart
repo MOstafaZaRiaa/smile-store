@@ -22,7 +22,7 @@ class CheckOutViewModel extends GetxController {
 
   var dbHelper = CartDatabaseHelper.db;
 
-   late String street1,street2,city,state,country;
+    String? street1,street2,city,state,country;
 
 
   GlobalKey<FormState> formState = GlobalKey();
@@ -38,16 +38,25 @@ class CheckOutViewModel extends GetxController {
       _pages = Pages.AddAddress;
     } else if (i == 2) {
 
-      if(street1.isEmpty){
+      try{
+        if(street1!.isEmpty){
+          formState.currentState!.save();
+          if(formState.currentState!.validate()||street1!.length>2){
+            _index = i;
+            _pages = Pages.Summary;
+          }
+        }
+      }catch (error){
         formState.currentState!.save();
-        if(formState.currentState!.validate()||street1.length>2){
+        if(formState.currentState!.validate()||street1!.length>2){
           _index = i;
           _pages = Pages.Summary;
         }
       }
 
 
-      if(street1.isNotEmpty){
+
+      if(street1!.isNotEmpty){
         _index = i;
         _pages = Pages.Summary;
       }

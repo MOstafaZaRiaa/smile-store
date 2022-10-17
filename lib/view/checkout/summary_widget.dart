@@ -83,15 +83,15 @@ class Summary extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                     CustomText(
-                      text: controller.street1 +
+                      text: controller.street1! +
                           ',' +
-                          controller.street2 +
+                          controller.street2! +
                           ',' +
-                          controller.city +
+                          controller.city! +
                           ',' +
-                          controller.state +
+                          controller.state! +
                           ',' +
-                          controller.country,
+                          controller.country!,
                       color: Colors.grey,
                       fontSize: 16.0,
                     ),

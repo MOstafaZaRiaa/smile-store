@@ -49,7 +49,6 @@ class OrdersHistoryViewModel extends GetxController {
         ),
       );
     }
-    _allOrders.reversed;
     update();
   }
 }
