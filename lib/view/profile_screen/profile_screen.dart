@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/view/profile_screen/edit_profile_screen.dart';
+import 'package:ecommerce_app/view/profile_screen/orders/orders_history_screen.dart';
 import 'package:ecommerce_app/view/profile_screen/shipping_address/shipping_address_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -7,7 +8,6 @@ import 'package:get/get.dart';
 import 'package:ecommerce_app/core/view_model/profile_view_model.dart';
 import 'package:ecommerce_app/view/widgets/custom_text.dart';
 
-import '../../core/view_model/orders_history_view_model.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -49,28 +49,15 @@ class ProfileScreen extends StatelessWidget {
                           iconPath: 'assets/menu_icons/Icon_Location.png',
                           tileText: 'Shipping Address',
                           onPressed: () {
-                            Get.to(ShippingAddressScreen());
+                            Get.to(()=>const ShippingAddressScreen());
                           },
                         ),
                         MenuListTile(
                           iconPath: 'assets/menu_icons/Icon_History.png',
                           tileText: 'Order History',
                           onPressed: () {
-                            Get.lazyPut(() => OrdersHistoryViewModel());
-                            final cartViewModel =
-                                Get.find<OrdersHistoryViewModel>();
-                            cartViewModel.getOrderData();
+                            Get.to(()=>const OrdersHistoryScreen());
                           },
-                        ),
-                        MenuListTile(
-                          iconPath: 'assets/menu_icons/Icon_Payment.png',
-                          tileText: 'Cards',
-                          onPressed: () {},
-                        ),
-                        MenuListTile(
-                          iconPath: 'assets/menu_icons/Icon_Alert.png',
-                          tileText: 'Notifications',
-                          onPressed: () {},
                         ),
                         MenuListTile(
                           iconPath: 'assets/menu_icons/Icon_Exit.png',
@@ -133,7 +120,7 @@ class MenuListTile extends StatelessWidget {
   final String? tileText;
   final Function? onPressed;
 
-  const MenuListTile({this.iconPath, this.tileText, this.onPressed});
+  const MenuListTile({super.key, this.iconPath, this.tileText, this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -145,7 +132,7 @@ class MenuListTile extends StatelessWidget {
         title: CustomText(
           text: tileText,
         ),
-        trailing: Icon(Icons.navigate_next_rounded),
+        trailing: const Icon(Icons.navigate_next_rounded),
       ),
     );
   }

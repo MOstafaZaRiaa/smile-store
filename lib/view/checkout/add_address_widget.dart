@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/constance.dart';
+import 'package:ecommerce_app/model/order_model.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -37,8 +38,18 @@ class AddAddress extends StatelessWidget {
                     height: 20,
                   ),
                   TextButton(
-                      onPressed: () {
-                        Get.to(const ShippingAddressScreen());
+                      onPressed: ()async{
+                        Address result = await Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const ShippingAddressScreen(isChoseingAddress: true,)),
+                        );
+                        print('Address : ${result.toJson()}');
+                        controller.street1 = result.street1!;
+                        controller.street2 = result.street2!;
+                        controller.country = result.country!;
+                        controller.city = result.city!;
+                        controller.state = result.state!;
+                        print('controller.street1 : ${controller.street1}');
                       },
                       child: const Text(
                         'Chose saved address.',
@@ -91,7 +102,7 @@ class AddAddress extends StatelessWidget {
                       }
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 40,
                   ),
                   Row(

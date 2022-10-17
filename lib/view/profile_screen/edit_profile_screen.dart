@@ -1,5 +1,4 @@
 import 'package:ecommerce_app/core/view_model/profile_image_view_model.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -8,9 +7,10 @@ import 'package:ecommerce_app/view/widgets/custom_text.dart';
 import 'package:ecommerce_app/constance.dart';
 import 'package:ecommerce_app/core/view_model/profile_view_model.dart';
 import 'package:ecommerce_app/model/user_model.dart';
-import 'change_password_screen.dart';
 
 class EditProfileScreen extends StatelessWidget {
+  const EditProfileScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<ProfileViewModel>(
@@ -69,7 +69,7 @@ class EditProfileScreen extends StatelessWidget {
                                 ? CircleAvatar(
                               radius: Get.width * .2,
                               backgroundImage:
-                              AssetImage('assets/images/dummy_image.png'),
+                              const AssetImage('assets/images/dummy_image.png'),
                             )
                                 : CircleAvatar(
                               radius: Get.width * .2,
@@ -92,7 +92,7 @@ class EditProfileScreen extends StatelessWidget {
                                           context: context,
                                           isDismissible: true,
                                           builder: (BuildContext context) {
-                                            return Container(
+                                            return SizedBox(
                                               height:
                                               MediaQuery
                                                   .of(context)
@@ -104,11 +104,11 @@ class EditProfileScreen extends StatelessWidget {
                                                 mainAxisSize: MainAxisSize.min,
                                                 children: [
                                                   ListTile(
-                                                    leading: Icon(
+                                                    leading: const Icon(
                                                       Icons.camera_alt_outlined,
                                                       color: primaryColor,
                                                     ),
-                                                    title: Text(
+                                                    title: const Text(
                                                         'Choose from camera'),
                                                     onTap: () {
                                                       imageController
@@ -121,11 +121,11 @@ class EditProfileScreen extends StatelessWidget {
                                                     },
                                                   ),
                                                   ListTile(
-                                                    leading: Icon(
+                                                    leading:const Icon(
                                                       Icons.photo,
                                                       color: primaryColor,
                                                     ),
-                                                    title: Text(
+                                                    title:const Text(
                                                         'Choose from gallery'),
                                                     onTap: () {
                                                       imageController
@@ -156,7 +156,7 @@ class EditProfileScreen extends StatelessWidget {
                       child: Column(
                         children: [
                           TextFormField(
-                            decoration: InputDecoration(labelText: 'Username'),
+                            decoration:const InputDecoration(labelText: 'Username'),
                             initialValue: controller.userModel!.name,
                             keyboardType: TextInputType.name,
                             textInputAction: TextInputAction.next,
@@ -169,7 +169,7 @@ class EditProfileScreen extends StatelessWidget {
                               }
                             },
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 20,
                           ),
                           TextFormField(
@@ -193,9 +193,8 @@ class EditProfileScreen extends StatelessWidget {
                           Align(
                             alignment: Alignment.centerLeft,
                             child: TextButton(
-                              onPressed: () {
-                               controller.sendPasswordResetEmail();
-                                //Get.to(() => ChangePasswordScreen());
+                              onPressed: ()async {
+                               await controller.sendPasswordResetEmail();
                               },
                               child: const Text(
                                 'Change your password',

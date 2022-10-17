@@ -1,14 +1,14 @@
+import 'package:ecommerce_app/core/view_model/home_view_model.dart';
 import 'package:ecommerce_app/view/category_screen.dart';
+import 'package:ecommerce_app/view/product_detail_screen.dart';
 import 'package:ecommerce_app/view/search_screen.dart';
+import 'package:ecommerce_app/view/widgets/custom_text.dart';
+import 'package:ecommerce_app/view/widgets/no_internet_widget.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_offline/flutter_offline.dart';
 import 'package:get/get.dart';
 
 import '../constance.dart';
-import 'package:ecommerce_app/core/view_model/home_view_model.dart';
-import 'package:ecommerce_app/view/product_detail_screen.dart';
-import 'package:ecommerce_app/view/widgets/custom_text.dart';
-
 import 'best_selling_screen.dart';
 
 class HomePage extends StatelessWidget {
@@ -17,83 +17,178 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<HomeViewModel>(
+      autoRemove: false,
       init: HomeViewModel(),
       builder: (controller) => RefreshIndicator(
-        color: primaryColor,
-        onRefresh: () {
-          return HomeViewModel().onRefresh();
+        onRefresh: ()async{
+          await controller.onRefresh();
         },
         child: Scaffold(
           appBar: AppBar(
-            title: const Text('E-commerce',style: TextStyle(color: Colors.black),),
+            title: const Text(
+              'E-commerce',
+              style: TextStyle(color: Colors.black),
+            ),
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             centerTitle: true,
             elevation: 0,
             actions: [
-              IconButton(onPressed: (){Get.to(() => const SearchScreen());}, icon: const Icon(Icons.search_rounded,color: Colors.black,))
+              IconButton(
+                  onPressed: () {
+                    Get.to(() => const SearchScreen());
+                  },
+                  icon: const Icon(
+                    Icons.search_rounded,
+                    color: Colors.black,
+                  ))
             ],
           ),
-          body: controller.products.isEmpty
-              ? const Center(
-                  child: CircularProgressIndicator(),
-                )
-              : SingleChildScrollView(
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                      top: 30.0,
-                      left: 10,
-                      right: 10,
-                    ),
-                    child: Column(
-                      children: [
-                        // _searchTextFormField(),
-                        const CustomText(
-                          text: 'Categories',
-                          color: Colors.black,
-                          fontSize: 18.0,
+
+          body: OfflineBuilder(
+            connectivityBuilder: (
+                BuildContext context,
+                ConnectivityResult connectivity,
+                Widget child,
+                ) {
+              final bool connected = connectivity != ConnectivityResult.none;
+
+              if (connected) {
+                return controller.isLoading.value
+                    ? const Center(
+                        child: CircularProgressIndicator(
+                          color: primaryColor,
                         ),
-                        const SizedBox(
-                          height: 30,
-                        ),
-                        _categoriesListView(),
-                        const SizedBox(
-                          height: 30,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const CustomText(
-                              text: 'Best Selling',
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            InkWell(
-                              onTap: () {
-                                //TODO:see all button
-                                Get.to(() => BestSellingScreen(
-                                      products: controller.products,
-                                    ));
-                              },
-                              child: const CustomText(
-                                text: 'See all',
-                                fontSize: 16.0,
+                      )
+                    : SingleChildScrollView(
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                            top: 30.0,
+                            left: 10,
+                            right: 10,
+                          ),
+                          child: Column(
+                            children: [
+                              // _searchTextFormField(),
+                              const CustomText(
+                                text: 'Categories',
+                                color: Colors.black,
+                                fontSize: 18.0,
                               ),
-                            ),
-                          ],
+                              const SizedBox(
+                                height: 30,
+                              ),
+                              _categoriesListView(),
+                              const SizedBox(
+                                height: 30,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  const CustomText(
+                                    text: 'Best Selling',
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  InkWell(
+                                    onTap: () {
+                                      //TODO:see all button
+                                      Get.to(() => BestSellingScreen(
+                                            products: controller.products,
+                                          ));
+                                    },
+                                    child: const CustomText(
+                                      text: 'See all',
+                                      fontSize: 16.0,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 30,
+                              ),
+                              _productsListView(),
+                            ],
+                          ),
                         ),
-                        const SizedBox(
-                          height: 30,
-                        ),
-                        _productsListView(),
-                      ],
-                    ),
-                  ),
-                ),
+                      );
+              } else {
+                return buildNoInternetWidget(context);
+              }
+            },
+            child: const CircularProgressIndicator(),
+          ),
+
+
+
+
+
+
+
+
+
+
+          // body: controller.isLoading.value
+          //     ? const Center(
+          //         child: CircularProgressIndicator(
+          //           color: primaryColor,
+          //         ),
+          //       )
+          //     : SingleChildScrollView(
+          //         child: Padding(
+          //           padding: const EdgeInsets.only(
+          //             top: 30.0,
+          //             left: 10,
+          //             right: 10,
+          //           ),
+          //           child: Column(
+          //             children: [
+          //               // _searchTextFormField(),
+          //               const CustomText(
+          //                 text: 'Categories',
+          //                 color: Colors.black,
+          //                 fontSize: 18.0,
+          //               ),
+          //               const SizedBox(
+          //                 height: 30,
+          //               ),
+          //               _categoriesListView(),
+          //               const SizedBox(
+          //                 height: 30,
+          //               ),
+          //               Row(
+          //                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //                 children: [
+          //                   const CustomText(
+          //                     text: 'Best Selling',
+          //                     fontSize: 18.0,
+          //                     fontWeight: FontWeight.bold,
+          //                   ),
+          //                   InkWell(
+          //                     onTap: () {
+          //                       //TODO:see all button
+          //                       Get.to(() => BestSellingScreen(
+          //                             products: controller.products,
+          //                           ));
+          //                     },
+          //                     child: const CustomText(
+          //                       text: 'See all',
+          //                       fontSize: 16.0,
+          //                     ),
+          //                   ),
+          //                 ],
+          //               ),
+          //               const SizedBox(
+          //                 height: 30,
+          //               ),
+          //               _productsListView(),
+          //             ],
+          //           ),
+          //         ),
+          //       ),
         ),
       ),
     );
   }
-
 
   Widget _categoriesListView() {
     return GetBuilder<HomeViewModel>(

@@ -13,7 +13,6 @@ class SearchScreenViewModel extends GetxController {
   final searchTextController = TextEditingController();
 
   SearchScreenViewModel() {
-
     getProducts();
     update();
   }

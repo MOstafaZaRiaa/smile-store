@@ -22,6 +22,10 @@ const String addressId = 'addressId';
 // ignore: constant_identifier_names
 const CACHED_USER_DATA = 'user';
 
+
+
+const String cachedFirstUse = 'firstUse';
+
 const kTileHeight = 50.0;
 const inProgressColor = Colors.black87;
 const todoColor = Color(0xffd1d2d7);

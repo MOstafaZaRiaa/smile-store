@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -7,6 +8,13 @@ import '../constance.dart';
 import 'package:ecommerce_app/model/user_model.dart';
 
 class LocalStorageData extends GetxController {
+  ValueNotifier<bool> _isUseForApp = ValueNotifier(false);
+  ValueNotifier<bool> get isUseForApp => _isUseForApp;
+
+  LocalStorageData(){
+    checkIfFirstAppUse();
+  }
+
   Future<UserModel?> get getUser async {
     try {
       UserModel userModel = await getUserData();
@@ -38,6 +46,30 @@ class LocalStorageData extends GetxController {
 
   deleteUser() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.clear();
+    await prefs.remove(CACHED_USER_DATA);
+  }
+
+  // return value of first use of app
+   checkIfFirstAppUse() async{
+     SharedPreferences prefs = await SharedPreferences.getInstance();
+     var isFirstUse = prefs.getBool(cachedFirstUse);
+    try {
+      if (isFirstUse == null) {
+        _isUseForApp.value = true;
+        update();
+      } else {
+        _isUseForApp.value =  false;
+        update();
+      }
+    } catch (error) {
+      print(error.toString());
+    }
+  }
+
+
+  //to set the app used for more than one time
+  setTheAppUsedManyTimes()async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(cachedFirstUse,false);
   }
 }

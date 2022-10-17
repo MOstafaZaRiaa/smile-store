@@ -1,11 +1,8 @@
 import 'package:ecommerce_app/core/view_model/cart_view_model.dart';
-import 'package:ecommerce_app/model/cart_product_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:toast/toast.dart';
 import 'package:get/get.dart';
 
-import '../../constance.dart';
 import 'package:ecommerce_app/helper/enum.dart';
 import 'package:ecommerce_app/view/control_view.dart';
 
@@ -40,28 +37,27 @@ class CheckOutViewModel extends GetxController {
       _index = i;
       _pages = Pages.AddAddress;
     } else if (i == 2) {
-      formState.currentState!.save();
 
-      if(formState.currentState!.validate()){
+      if(street1.isEmpty){
+        formState.currentState!.save();
+        if(formState.currentState!.validate()||street1.length>2){
+          _index = i;
+          _pages = Pages.Summary;
+        }
+      }
+
+
+      if(street1.isNotEmpty){
         _index = i;
         _pages = Pages.Summary;
       }
     } else if (i == 3) {
       _pages = Pages.DeliveryTime;
-      Get.offAll(() => ControlView());
+      Get.offAll(() => const ControlView());
     }
     update();
   }
 
-  Color getColor(int i) {
-    if (i == _index) {
-      return inProgressColor;
-    } else if (i < _index) {
-      return Colors.green;
-    } else {
-      return todoColor;
-    }
-  }
 
   Future placeOrder()async{
     final address = Address(
@@ -88,18 +84,6 @@ class CheckOutViewModel extends GetxController {
     await FirestoreUserOrders().placeNewOrder(newOrder, userId);
     update();
   }
-
-  List<Map<String,String>> storeOrderNameAndPriceOnly(products){
-    List<Map<String,String>> productsNameAndPrice = [];
-    for(int i=0 ; i<products!.length;i++){
-      productsNameAndPrice.add({
-        'productName': '${products![i].name}',
-        'productPrice': '${products![i].price}',
-      });
-    }
-    return productsNameAndPrice;
-  }
-
 
   clearCart()async{
     await dbHelper.clearCart();

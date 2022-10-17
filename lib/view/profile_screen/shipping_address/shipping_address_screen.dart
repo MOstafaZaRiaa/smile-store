@@ -1,16 +1,17 @@
+import 'package:ecommerce_app/core/view_model/address_view_model.dart';
 import 'package:ecommerce_app/model/order_model.dart';
+import 'package:ecommerce_app/view/profile_screen/shipping_address/add_new_address.dart';
+import 'package:ecommerce_app/view/widgets/custom_button.dart';
+import 'package:ecommerce_app/view/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 
-import 'package:ecommerce_app/view/widgets/custom_text.dart';
-import 'package:ecommerce_app/view/widgets/custom_button.dart';
-import 'package:ecommerce_app/core/view_model/address_view_model.dart';
-import 'package:ecommerce_app/view/profile_screen/shipping_address/add_new_address.dart';
 import '../../../constance.dart';
 
 class ShippingAddressScreen extends StatelessWidget {
-  const ShippingAddressScreen({super.key});
+  final isChoseingAddress;
+
+  const ShippingAddressScreen({super.key, this.isChoseingAddress = false});
 
   @override
   Widget build(BuildContext context) {
@@ -134,20 +135,32 @@ class ShippingAddressScreen extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            Container(
-                              width: 180,
-                              height: 100,
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      width: 1, color: primaryColor)),
-                              margin: const EdgeInsets.all(20),
-                              child: CustomButton(
-                                text: 'chose',
-                                color: Colors.white,
-                                textColor: primaryColor,
-                                onPressed: () {},
+                            if (isChoseingAddress)
+                              Container(
+                                width: 180,
+                                height: 100,
+                                decoration: BoxDecoration(
+                                  border:
+                                      Border.all(width: 1, color: primaryColor),
+                                ),
+                                margin: const EdgeInsets.all(20),
+                                child: CustomButton(
+                                  text: 'chose',
+                                  color: Colors.white,
+                                  textColor: primaryColor,
+                                  onPressed: () {
+                                     Navigator.pop(context,Address(
+                                       addressId: controller.activeAddress!.addressId,
+                                       addressName: controller.activeAddress!.addressName,
+                                       street1: controller.activeAddress!.street1,
+                                       street2: controller.activeAddress!.street2,
+                                       state: controller.activeAddress!.state,
+                                       city: controller.activeAddress!.city,
+                                       country: controller.activeAddress!.country,
+                                     ),);
+                                  },
+                                ),
                               ),
-                            ),
                             Container(
                               width: 180,
                               height: 100,

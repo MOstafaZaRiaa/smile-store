@@ -22,22 +22,24 @@ class HomeViewModel extends GetxController {
     update();
   }
 
-  onRefresh(){
-    getCategory();
-    getProducts();
+  onRefresh()async{
+    _categories = [];
+    _products = [];
+    await getCategory();
+    await getProducts();
     update();
   }
 
   getCategory() async {
     _isLoading.value = true;
     HomeServices().getCategories().then((categoriesDocs) {
-      categoriesDocs.forEach((document) {
+      for (var document in categoriesDocs) {
         _categories.add(
           CategoryModel.fromJson(
             document.data() as Map<dynamic, dynamic>,
           ),
         );
-      });
+      }
       update();
       _isLoading.value = false;
     });
@@ -45,13 +47,13 @@ class HomeViewModel extends GetxController {
   getProducts() async {
     _isLoading.value = true;
     HomeServices().getProducts().then((productsDocs) {
-      productsDocs.forEach((document) {
+      for (var document in productsDocs) {
         _products.add(
           ProductModel.fromJson(
             document.data() as Map<dynamic, dynamic>,
           ),
         );
-      });
+      }
       update();
       _isLoading.value = false;
     });

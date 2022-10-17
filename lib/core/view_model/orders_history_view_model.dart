@@ -30,7 +30,7 @@ class OrdersHistoryViewModel extends GetxController {
   }
 
   getOrderData() async {
-    // List<OrderModel> _orders = [];
+    _allOrders = [];
     DocumentSnapshot ordersDocumentSnapshot =
         await firestoreUserOrders.getUserOrders(userID);
     Map<String, dynamic>? orderData =
@@ -49,6 +49,7 @@ class OrdersHistoryViewModel extends GetxController {
         ),
       );
     }
+    _allOrders.reversed;
     update();
   }
 }
