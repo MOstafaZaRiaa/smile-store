@@ -16,8 +16,6 @@ run both Android and iOS devices because it builds with flutter.
 
 -> Login
 
--> Forgot Password
-
 -> Sign Up
 
 -> Complete Profile
