@@ -5,7 +5,7 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../../constance.dart';
-import 'package:ecommerce_app/model/cart_product_model.dart';
+import '../../model/cart_product_model.dart';
 
 class CartDatabaseHelper {
   CartDatabaseHelper._();

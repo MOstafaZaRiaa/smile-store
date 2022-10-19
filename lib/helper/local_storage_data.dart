@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../constance.dart';
-import 'package:ecommerce_app/model/user_model.dart';
+import '../model/user_model.dart';
 
 class LocalStorageData extends GetxController {
   ValueNotifier<bool> _isUseForApp = ValueNotifier(false);

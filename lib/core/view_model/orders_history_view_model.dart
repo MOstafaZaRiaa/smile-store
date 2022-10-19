@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ecommerce_app/core/services/firestore_user.dart';
-import 'package:ecommerce_app/core/services/firestore_user_orders.dart';
-import 'package:ecommerce_app/model/cart_product_model.dart';
-import 'package:ecommerce_app/model/order_model.dart';
+import '../services/firestore_user.dart';
+import '../services/firestore_user_orders.dart';
+import '../../model/cart_product_model.dart';
+import '../../model/order_model.dart';
 import 'package:get/get.dart';
 
 class OrdersHistoryViewModel extends GetxController {

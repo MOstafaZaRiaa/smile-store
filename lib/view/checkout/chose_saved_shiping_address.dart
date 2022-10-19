@@ -1,12 +1,12 @@
-import 'package:ecommerce_app/model/order_model.dart';
+import '../../model/order_model.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import 'package:ecommerce_app/view/widgets/custom_text.dart';
-import 'package:ecommerce_app/view/widgets/custom_button.dart';
-import 'package:ecommerce_app/core/view_model/address_view_model.dart';
-import 'package:ecommerce_app/view/profile_screen/shipping_address/add_new_address.dart';
+import '../widgets/custom_text.dart';
+import '../widgets/custom_button.dart';
+import '../../core/view_model/address_view_model.dart';
+import '../profile_screen/shipping_address/add_new_address.dart';
 import '../../../constance.dart';
 
 class ChoseSavedShipingAddress extends StatelessWidget {

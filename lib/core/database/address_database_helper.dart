@@ -2,7 +2,7 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../../constance.dart';
-import 'package:ecommerce_app/model/order_model.dart';
+import '../../model/order_model.dart';
 
 class AddressDatabaseHelper {
   AddressDatabaseHelper._();

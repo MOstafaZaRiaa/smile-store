@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import 'package:ecommerce_app/core/view_model/checkout_view_model.dart';
-import 'package:ecommerce_app/view/widgets/custom_button.dart';
-import 'package:ecommerce_app/helper/enum.dart';
+import '../../core/view_model/checkout_view_model.dart';
+import '../widgets/custom_button.dart';
+import '../../helper/enum.dart';
 import '../../constance.dart';
 import '../control_view.dart';
 import '../widgets/custom_stepper.dart';

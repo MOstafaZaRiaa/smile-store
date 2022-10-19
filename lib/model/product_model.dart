@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:ecommerce_app/helper/color_extension.dart';
+import '../helper/color_extension.dart';
 
 class ProductModel {
   String? name, price, size, description,productId,category, image;

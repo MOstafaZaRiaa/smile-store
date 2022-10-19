@@ -1,12 +1,12 @@
-import 'package:ecommerce_app/constance.dart';
-import 'package:ecommerce_app/model/order_model.dart';
+import '../../constance.dart';
+import '../../model/order_model.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import 'package:ecommerce_app/core/view_model/checkout_view_model.dart';
-import 'package:ecommerce_app/view/widgets/custom_text.dart';
-import 'package:ecommerce_app/view/widgets/custom_text_form_field.dart';
+import '../../core/view_model/checkout_view_model.dart';
+import '../widgets/custom_text.dart';
+import '../widgets/custom_text_form_field.dart';
 
 import '../profile_screen/shipping_address/shipping_address_screen.dart';
 
@@ -41,7 +41,7 @@ class AddAddress extends StatelessWidget {
                       onPressed: ()async{
                         Address result = await Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const ShippingAddressScreen(isChoseingAddress: true,)),
+                          MaterialPageRoute(builder: (context) => const ShippingAddressScreen(isChoosingAddress: true,)),
                         );
                         print('Address : ${result.toJson()}');
                         controller.street1 = result.street1!;

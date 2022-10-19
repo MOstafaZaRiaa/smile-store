@@ -1,10 +1,10 @@
-import 'package:ecommerce_app/view/profile_screen/profile_screen.dart';
+import '../../view/profile_screen/profile_screen.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:get/get.dart';
 
-import 'package:ecommerce_app/view/cart_screen.dart';
-import 'package:ecommerce_app/view/home_page.dart';
+import '../../view/cart_screen.dart';
+import '../../view/home_page.dart';
 
 class ControlViewModel extends GetxController {
 

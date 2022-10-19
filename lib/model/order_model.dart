@@ -1,4 +1,4 @@
-import 'package:ecommerce_app/model/cart_product_model.dart';
+import 'cart_product_model.dart';
 import 'package:flutter/material.dart';
 class OrderModel {
 

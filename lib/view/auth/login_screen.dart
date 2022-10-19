@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import 'package:ecommerce_app/constance.dart';
-import 'package:ecommerce_app/view/widgets/custom_button.dart';
-import 'package:ecommerce_app/view/widgets/custom_button_social.dart';
-import 'package:ecommerce_app/view/widgets/custom_text.dart';
-import 'package:ecommerce_app/view/widgets/custom_text_form_field.dart';
-import 'package:ecommerce_app/core/view_model/auth_view_model.dart';
-import 'package:ecommerce_app/view/auth/signup_screen.dart';
+import '../../constance.dart';
+import '../widgets/custom_button.dart';
+import '../widgets/custom_button_social.dart';
+import '../widgets/custom_text.dart';
+import '../widgets/custom_text_form_field.dart';
+import '../../core/view_model/auth_view_model.dart';
+import 'signup_screen.dart';
 
 class LoginScreen extends GetView<AuthViewModel> {
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();

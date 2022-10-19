@@ -1,8 +1,8 @@
 import 'dart:io';
 
-import 'package:ecommerce_app/core/services/firestore_user.dart';
-import 'package:ecommerce_app/helper/local_storage_data.dart';
-import 'package:ecommerce_app/model/user_model.dart';
+import '../services/firestore_user.dart';
+import '../../helper/local_storage_data.dart';
+import '../../model/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:image_picker/image_picker.dart';

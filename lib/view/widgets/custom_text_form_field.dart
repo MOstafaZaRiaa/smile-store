@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:ecommerce_app/view/widgets/custom_text.dart';
-
+import 'custom_text.dart';
 import '../../constance.dart';
 
 class CustomTextFormField extends StatelessWidget {
@@ -11,6 +10,7 @@ class CustomTextFormField extends StatelessWidget {
   final Function onValidate;
 
   const CustomTextFormField({
+    super.key,
     this.text,
     this.labelText,
     this.initialValue,

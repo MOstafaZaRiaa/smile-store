@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import 'package:ecommerce_app/view/auth/login_screen.dart';
-import 'package:ecommerce_app/core/view_model/auth_view_model.dart';
-import 'package:ecommerce_app/view/widgets/custom_button.dart';
-import 'package:ecommerce_app/view/widgets/custom_text.dart';
-import 'package:ecommerce_app/view/widgets/custom_text_form_field.dart';
+import 'login_screen.dart';
+import '../../core/view_model/auth_view_model.dart';
+import '../widgets/custom_button.dart';
+import '../widgets/custom_text.dart';
+import '../widgets/custom_text_form_field.dart';
 
 class SignUpScreen extends GetView<AuthViewModel> {
   @override

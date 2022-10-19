@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import 'package:ecommerce_app/constance.dart';
-import 'package:ecommerce_app/core/database/address_database_helper.dart';
-import 'package:ecommerce_app/model/order_model.dart';
+import '../../constance.dart';
+import '../database/address_database_helper.dart';
+import '../../model/order_model.dart';
 
 import 'cart_view_model.dart';
 import 'checkout_view_model.dart';

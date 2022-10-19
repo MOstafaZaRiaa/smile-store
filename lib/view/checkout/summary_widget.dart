@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../constance.dart';
-import 'package:ecommerce_app/core/view_model/cart_view_model.dart';
-import 'package:ecommerce_app/view/widgets/custom_text.dart';
-import 'package:ecommerce_app/core/view_model/checkout_view_model.dart';
+import '../../core/view_model/cart_view_model.dart';
+import '../widgets/custom_text.dart';
+import '../../core/view_model/checkout_view_model.dart';
 
 class Summary extends StatelessWidget {
   const Summary({super.key});

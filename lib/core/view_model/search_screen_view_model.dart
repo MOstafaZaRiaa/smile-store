@@ -1,5 +1,5 @@
-import 'package:ecommerce_app/core/services/home_services.dart';
-import 'package:ecommerce_app/model/product_model.dart';
+import '../services/home_services.dart';
+import '../../model/product_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 

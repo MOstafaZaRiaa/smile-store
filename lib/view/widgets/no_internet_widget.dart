@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 import '../../constance.dart';
 
 Widget buildNoInternetWidget(context) {
+  final deviceWidth = Get.width;
+  final deviceHeight = Get.height;
   return Center(
     child: Container(
       color: Colors.white,
@@ -15,7 +19,7 @@ Widget buildNoInternetWidget(context) {
             height: 20,
           ),
           SizedBox(
-            width: MediaQuery.of(context).size.width ,
+            width: deviceWidth ,
             child:const Center(
               child:  Text(
                 'Can\'t connect .. check internet',
@@ -30,8 +34,8 @@ Widget buildNoInternetWidget(context) {
             padding: const EdgeInsets.all(20),
             child: SvgPicture.asset(
               'assets/images/no_internet.svg',
-              width: MediaQuery.of(context).size.width * .8,
-              height: MediaQuery.of(context).size.width * .6,
+              width: deviceWidth * .8,
+              height: deviceHeight * .6,
             ),
           )
         ],

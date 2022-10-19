@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-import 'package:ecommerce_app/constance.dart';
-import 'package:ecommerce_app/view/widgets/custom_text.dart';
+import '../../constance.dart';
+import 'custom_text.dart';
 
 class CustomButton extends StatelessWidget {
-  final text;
+  final String text;
   final Color color;
   final Color textColor;
   final Function? onPressed;
 
-  const CustomButton({
-    this.text,
+  const CustomButton({super.key,
+    required this.text,
     this.onPressed,
     this.textColor = Colors.white,
     this.color = primaryColor,

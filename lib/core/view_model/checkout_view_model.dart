@@ -1,10 +1,10 @@
-import 'package:ecommerce_app/core/view_model/cart_view_model.dart';
+import 'cart_view_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:ecommerce_app/helper/enum.dart';
-import 'package:ecommerce_app/view/control_view.dart';
+import '../../helper/enum.dart';
+import '../../view/control_view.dart';
 
 import '../../model/order_model.dart';
 import '../database/cart_database_helper.dart';

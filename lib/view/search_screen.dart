@@ -1,11 +1,11 @@
-import 'package:ecommerce_app/view/widgets/custom_text.dart';
-import 'package:ecommerce_app/view/product_detail_screen.dart';
 import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_state.dart';
 
 import '../constance.dart';
 import '../core/view_model/search_screen_view_model.dart';
+import 'widgets/custom_text.dart';
+import 'product_detail_screen.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});

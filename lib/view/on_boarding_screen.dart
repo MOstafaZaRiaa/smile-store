@@ -1,4 +1,3 @@
-import 'package:ecommerce_app/view/control_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -16,7 +15,7 @@ class OnBoardingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final onBoarding = Get.put(LocalStorageData());
-    final deviceWidth = MediaQuery.of(context).size.width;
+    final deviceWidth = Get.width;
     return SimpleBuilder(
       builder: (BuildContext context )=>
           IntroductionScreen(
@@ -65,8 +64,8 @@ class OnBoardingPage extends StatelessWidget {
             animationDuration: 1000,
             dotsDecorator: DotsDecorator(
                 activeColor: primaryColor,
-                size: Size(10,10),
-                activeSize: Size(22,10),
+                size:const Size(10,10),
+                activeSize:const Size(22,10),
                 activeShape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(24),
                 )

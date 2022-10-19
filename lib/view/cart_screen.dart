@@ -1,17 +1,22 @@
-import 'package:ecommerce_app/view/checkout/checkout_view.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
-import 'package:get/state_manager.dart';
+import 'package:flutter/material.dart';
+
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 import '../constance.dart';
 import 'widgets/custom_button.dart';
 import 'widgets/custom_text.dart';
-import 'package:ecommerce_app/core/view_model/cart_view_model.dart';
+import '../core/view_model/cart_view_model.dart';
+import 'checkout/checkout_view.dart';
 
 class CartScreen extends StatelessWidget {
+  const CartScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
+    final deviceWidth = Get.width;
+    final deviceHeight = Get.height;
     return GetBuilder<CartViewModel>(
       init: CartViewModel(),
       builder: (controller) => controller.isLoading.value
@@ -22,9 +27,9 @@ class CartScreen extends StatelessWidget {
               ? Center(
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
-                    child: Container(
-                      height: MediaQuery.of(context).size.height*0.4,
-                      width: MediaQuery.of(context).size.width*0.4,
+                    child: SizedBox(
+                      height: deviceHeight * 0.4,
+                      width: deviceWidth * 0.4,
                       child: SvgPicture.asset(
                         'assets/images/empty_cart.svg',
                       ),
@@ -42,7 +47,8 @@ class CartScreen extends StatelessWidget {
                           child: ListView.separated(
                             itemCount: controller.allCartProducts.length,
                             separatorBuilder:
-                                (BuildContext context, int index) => const SizedBox(
+                                (BuildContext context, int index) =>
+                                    const SizedBox(
                               height: 15,
                             ),
                             itemBuilder: (BuildContext context, int index) =>
@@ -53,13 +59,12 @@ class CartScreen extends StatelessWidget {
                               ),
                               onDismissed: (dismissDirection) {
                                 controller.deleteProduct(
-                                    controller.allCartProducts[index],
-                                    context);
+                                    controller.allCartProducts[index], context);
                               },
                               background: Container(
                                 color: Colors.red,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                child: const Padding(
+                                  padding: EdgeInsets.all(8.0),
                                   child: Icon(
                                     Icons.delete_rounded,
                                     color: Colors.white,
@@ -68,7 +73,7 @@ class CartScreen extends StatelessWidget {
                                 alignment: Alignment.centerRight,
                               ),
                               child: Container(
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(30),
                                     bottomLeft: Radius.circular(20),
@@ -78,9 +83,9 @@ class CartScreen extends StatelessWidget {
                                   children: [
                                     Container(
                                       height:
-                                          MediaQuery.of(context).size.height *
+                                          deviceHeight *
                                               0.2,
-                                      width: MediaQuery.of(context).size.width *
+                                      width: deviceWidth *
                                           0.35,
                                       decoration: BoxDecoration(
                                         image: DecorationImage(
@@ -89,13 +94,13 @@ class CartScreen extends StatelessWidget {
                                                 .allCartProducts[index].image!,
                                           ),
                                         ),
-                                        borderRadius: BorderRadius.only(
+                                        borderRadius: const BorderRadius.only(
                                           topLeft: Radius.circular(30),
                                           bottomLeft: Radius.circular(20),
                                         ),
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 10,
                                     ),
                                     Column(
@@ -107,7 +112,7 @@ class CartScreen extends StatelessWidget {
                                               .allCartProducts[index].name,
                                           fontSize: 16.0,
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 10,
                                         ),
                                         CustomText(
@@ -116,11 +121,11 @@ class CartScreen extends StatelessWidget {
                                           fontSize: 16.0,
                                           color: primaryColor,
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 20,
                                         ),
                                         Container(
-                                          padding: EdgeInsets.symmetric(
+                                          padding:const EdgeInsets.symmetric(
                                             horizontal: 10,
                                           ),
                                           decoration: BoxDecoration(
@@ -133,15 +138,13 @@ class CartScreen extends StatelessWidget {
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               InkWell(
-                                                child: Container(
-                                                  child: Icon(Icons.add),
-                                                ),
+                                                child:const Icon(Icons.add),
                                                 onTap: () {
                                                   controller
                                                       .increaseQuantity(index);
                                                 },
                                               ),
-                                              SizedBox(
+                                              const SizedBox(
                                                 width: 20,
                                               ),
                                               CustomText(
@@ -152,7 +155,7 @@ class CartScreen extends StatelessWidget {
                                                 alignment: Alignment.center,
                                                 fontSize: 16.0,
                                               ),
-                                              SizedBox(
+                                              const SizedBox(
                                                 width: 20,
                                               ),
                                               InkWell(
@@ -160,7 +163,7 @@ class CartScreen extends StatelessWidget {
                                                   padding:
                                                       const EdgeInsets.only(
                                                           bottom: 15.0),
-                                                  child: Icon(
+                                                  child:const Icon(
                                                       Icons.minimize_rounded),
                                                 ),
                                                 onTap: () {
@@ -201,7 +204,7 @@ class CartScreen extends StatelessWidget {
                           ),
                           Container(
                             padding: const EdgeInsets.symmetric(vertical: 10),
-                            width: MediaQuery.of(context).size.width * 0.35,
+                            width: deviceWidth * 0.35,
                             child: CustomButton(
                               text: 'ADD',
                               onPressed: () {

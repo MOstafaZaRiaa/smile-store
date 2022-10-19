@@ -1,12 +1,12 @@
-import 'package:ecommerce_app/constance.dart';
-import 'package:ecommerce_app/model/order_model.dart';
+import '../../constance.dart';
+import '../../model/order_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import 'package:ecommerce_app/core/database/cart_database_helper.dart';
-import 'package:ecommerce_app/model/cart_product_model.dart';
+import '../database/cart_database_helper.dart';
+import '../../model/cart_product_model.dart';
 
 import '../services/firestore_user_orders.dart';
 

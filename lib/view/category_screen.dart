@@ -1,28 +1,30 @@
-import 'package:ecommerce_app/helper/color_extension.dart';
-import 'package:ecommerce_app/model/product_model.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../constance.dart';
-import 'package:ecommerce_app/view/product_detail_screen.dart';
-import 'package:ecommerce_app/view/widgets/custom_text.dart';
+import 'product_detail_screen.dart';
+import 'widgets/custom_text.dart';
+import '../helper/color_extension.dart';
+import '../model/product_model.dart';
 
 class CategoryScreen extends StatelessWidget {
   final String? title;
 
-  const CategoryScreen({
+  const CategoryScreen({super.key,
     this.title,
   });
 
+  @override
   Widget build(BuildContext context) {
     final deviceWidth = Get.width;
+    final deviceHeight = Get.height;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_outlined,color: Colors.black,),
+          icon: const Icon(Icons.arrow_back_ios_outlined,color: Colors.black,),
           onPressed: () {
             Get.back();
           },
@@ -39,7 +41,7 @@ class CategoryScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Expanded(
@@ -51,8 +53,10 @@ class CategoryScreen extends StatelessWidget {
                   builder: (BuildContext context, AsyncSnapshot snapshot) {
 
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Center(
-                        child: CircularProgressIndicator(),
+                      return const Center(
+                        child: CircularProgressIndicator(
+                          color: primaryColor,
+                        ),
                       );
                     }
 
@@ -61,8 +65,8 @@ class CategoryScreen extends StatelessWidget {
                       itemCount: products.length,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
-                        childAspectRatio: MediaQuery.of(context).size.width /
-                            (MediaQuery.of(context).size.height / 0.9),
+                        childAspectRatio: deviceWidth /
+                            (deviceHeight / 0.9),
                       ),
                       itemBuilder: (context, index) {
                         return InkWell(
@@ -85,7 +89,7 @@ class CategoryScreen extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Container(
+                                SizedBox(
                                   height: 220,
                                   child: Image(
                                     fit: BoxFit.cover,
@@ -94,7 +98,7 @@ class CategoryScreen extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 CustomText(
@@ -102,7 +106,7 @@ class CategoryScreen extends StatelessWidget {
                                   fontSize: 16.0,
                                   // maxLine: 1,
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 5,
                                 ),
                                 //description of product
@@ -112,7 +116,7 @@ class CategoryScreen extends StatelessWidget {
                                   maxLine: 1,
                                   color: greyAccent,
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 5,
                                 ),
                                 CustomText(
@@ -128,7 +132,7 @@ class CategoryScreen extends StatelessWidget {
                       },
                     );
                   }),
-            )
+            ),
           ],
         ),
       ),

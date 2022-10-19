@@ -1,12 +1,12 @@
-import 'package:ecommerce_app/core/view_model/profile_image_view_model.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import 'package:ecommerce_app/view/widgets/custom_text.dart';
-import 'package:ecommerce_app/constance.dart';
-import 'package:ecommerce_app/core/view_model/profile_view_model.dart';
-import 'package:ecommerce_app/model/user_model.dart';
+import '../widgets/custom_text.dart';
+import '../../constance.dart';
+import '../../core/view_model/profile_image_view_model.dart';
+import '../../core/view_model/profile_view_model.dart';
+import '../../model/user_model.dart';
 
 class EditProfileScreen extends StatelessWidget {
   const EditProfileScreen({super.key});
@@ -167,6 +167,7 @@ class EditProfileScreen extends StatelessWidget {
                               if (value!.isEmpty || value.length < 6) {
                                 return 'Username can\'t be less 6 characters';
                               }
+                              return null;
                             },
                           ),
                           const SizedBox(
@@ -185,6 +186,7 @@ class EditProfileScreen extends StatelessWidget {
                               if (value!.isEmpty || !(value.contains('@'))) {
                                 return 'Please enter valid email';
                               }
+                              return null;
                             },
                           ),
                           const SizedBox(

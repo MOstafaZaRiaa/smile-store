@@ -10,6 +10,7 @@ class CustomText extends StatelessWidget {
   final maxLine;
 
   const CustomText({
+    super.key,
     this.text = '',
     this.color = Colors.black,
     this.alignment = Alignment.topLeft,

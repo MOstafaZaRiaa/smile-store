@@ -1,6 +1,6 @@
-import 'package:ecommerce_app/constance.dart';
-import 'package:ecommerce_app/core/view_model/orders_history_view_model.dart';
-import 'package:ecommerce_app/model/order_model.dart';
+import '../../../constance.dart';
+import '../../../core/view_model/orders_history_view_model.dart';
+import '../../../model/order_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';

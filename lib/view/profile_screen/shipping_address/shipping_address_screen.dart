@@ -1,20 +1,22 @@
-import 'package:ecommerce_app/core/view_model/address_view_model.dart';
-import 'package:ecommerce_app/model/order_model.dart';
-import 'package:ecommerce_app/view/profile_screen/shipping_address/add_new_address.dart';
-import 'package:ecommerce_app/view/widgets/custom_button.dart';
-import 'package:ecommerce_app/view/widgets/custom_text.dart';
+import '../../../core/view_model/address_view_model.dart';
+import '../../../model/order_model.dart';
+import 'add_new_address.dart';
+import '../../widgets/custom_button.dart';
+import '../../widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../constance.dart';
 
 class ShippingAddressScreen extends StatelessWidget {
-  final isChoseingAddress;
+  final bool isChoosingAddress;
 
-  const ShippingAddressScreen({super.key, this.isChoseingAddress = false});
+  const ShippingAddressScreen({super.key, this.isChoosingAddress = false});
 
   @override
   Widget build(BuildContext context) {
+    final deviceWidth = Get.width;
+    final deviceHeight = Get.height;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -49,8 +51,8 @@ class ShippingAddressScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.25,
-                              width: MediaQuery.of(context).size.width * 0.25,
+                              height: deviceHeight * 0.25,
+                              width: deviceWidth * 0.25,
                               child: Image.asset(
                                 'assets/location.gif',
                               ),
@@ -135,7 +137,7 @@ class ShippingAddressScreen extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            if (isChoseingAddress)
+                            if (isChoosingAddress)
                               Container(
                                 width: 180,
                                 height: 100,

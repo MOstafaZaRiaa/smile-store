@@ -1,12 +1,12 @@
-import 'package:ecommerce_app/view/profile_screen/edit_profile_screen.dart';
-import 'package:ecommerce_app/view/profile_screen/orders/orders_history_screen.dart';
-import 'package:ecommerce_app/view/profile_screen/shipping_address/shipping_address_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import 'package:ecommerce_app/core/view_model/profile_view_model.dart';
-import 'package:ecommerce_app/view/widgets/custom_text.dart';
+import '../../core/view_model/profile_view_model.dart';
+import '../widgets/custom_text.dart';
+import 'edit_profile_screen.dart';
+import 'orders/orders_history_screen.dart';
+import 'shipping_address/shipping_address_screen.dart';
 
 
 class ProfileScreen extends StatelessWidget {
@@ -42,7 +42,7 @@ class ProfileScreen extends StatelessWidget {
                           iconPath: 'assets/menu_icons/Icon_Edit-Profile.png',
                           tileText: 'Edit Profile',
                           onPressed: () {
-                            Get.to(() => EditProfileScreen());
+                            Get.to(() =>const EditProfileScreen());
                           },
                         ),
                         MenuListTile(

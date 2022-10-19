@@ -3,12 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import 'package:ecommerce_app/view/auth/login_screen.dart';
-import 'package:ecommerce_app/core/view_model/auth_view_model.dart';
-import '../helper/local_storage_data.dart';
-import 'on_boarding_screen.dart';
-import 'spalsh_screen.dart';
-import 'package:ecommerce_app/core/view_model/control_view_model.dart';
+import 'auth/login_screen.dart';
+import '../core/view_model/auth_view_model.dart';
+import '../core/view_model/control_view_model.dart';
 
 class ControlView extends GetWidget<AuthViewModel> {
   const ControlView({super.key});

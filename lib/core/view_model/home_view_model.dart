@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 
 import 'package:get/get.dart';
 
-import 'package:ecommerce_app/core/services/home_services.dart';
-import 'package:ecommerce_app/model/category_model.dart';
-import 'package:ecommerce_app/model/product_model.dart';
+import '../services/home_services.dart';
+import '../../model/category_model.dart';
+import '../../model/product_model.dart';
 
 class HomeViewModel extends GetxController {
   ValueNotifier<bool> _isLoading = ValueNotifier(false);
@@ -16,9 +16,13 @@ class HomeViewModel extends GetxController {
   List<ProductModel> _products = [];
   List<ProductModel> get products => _products;
 
+  List _offers = [];
+  List get offers => _offers;
+
   HomeViewModel() {
     getCategory();
     getProducts();
+    getOffers();
     update();
   }
 
@@ -27,6 +31,7 @@ class HomeViewModel extends GetxController {
     _products = [];
     await getCategory();
     await getProducts();
+    await getOffers();
     update();
   }
 
@@ -40,6 +45,16 @@ class HomeViewModel extends GetxController {
           ),
         );
       }
+      update();
+      _isLoading.value = false;
+    });
+  }
+  getOffers() async {
+
+    _isLoading.value = true;
+    HomeServices().getOffers().then((docs) {
+      _offers = docs['offers'];
+      // print('getOffers : ${docs['offers']}');
       update();
       _isLoading.value = false;
     });

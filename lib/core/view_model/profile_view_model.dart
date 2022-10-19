@@ -1,14 +1,14 @@
-import 'package:ecommerce_app/core/database/cart_database_helper.dart';
+import '../database/cart_database_helper.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import 'package:ecommerce_app/helper/local_storage_data.dart';
-import 'package:ecommerce_app/model/user_model.dart';
-import 'package:ecommerce_app/view/auth/login_screen.dart';
-import 'package:ecommerce_app/core/services/firestore_user.dart';
+import '../../helper/local_storage_data.dart';
+import '../../model/user_model.dart';
+import '../../view/auth/login_screen.dart';
+import '../services/firestore_user.dart';
 import '../../constance.dart';
 
 class ProfileViewModel extends GetxController {

@@ -1,6 +1,6 @@
-import 'package:ecommerce_app/constance.dart';
-import 'package:ecommerce_app/helper/enum.dart';
-import 'package:ecommerce_app/view/widgets/custom_text.dart';
+import '../../constance.dart';
+import '../../helper/enum.dart';
+import '../widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 
 class DeliveryTime extends StatefulWidget {
