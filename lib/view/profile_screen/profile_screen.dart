@@ -42,7 +42,7 @@ class ProfileScreen extends StatelessWidget {
                           iconPath: 'assets/menu_icons/Icon_Edit-Profile.png',
                           tileText: 'Edit Profile',
                           onPressed: () {
-                            Get.to(() =>const EditProfileScreen());
+                            Get.to(() => EditProfileScreen());
                           },
                         ),
                         MenuListTile(
@@ -96,7 +96,7 @@ class UserInfo extends StatelessWidget {
               : NetworkImage('${controller.userModel?.userPic}'),
         ),
         const SizedBox(
-          width: 50,
+          width: 20,
         ),
         Column(
           mainAxisAlignment: MainAxisAlignment.start,

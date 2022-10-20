@@ -1,3 +1,5 @@
+import 'package:flutter_svg/svg.dart';
+
 import '../../../constance.dart';
 import '../../../core/view_model/orders_history_view_model.dart';
 import '../../../model/order_model.dart';
@@ -18,6 +20,8 @@ class OrdersHistoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final deviceWidth = Get.width;
+    final deviceHeight = Get.height;
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -40,20 +44,50 @@ class OrdersHistoryScreen extends StatelessWidget {
       body: GetBuilder<OrdersHistoryViewModel>(
         init: OrdersHistoryViewModel(),
         builder: (controller) => SafeArea(
-          child: controller.allOrders.isEmpty
+          child: controller.isLoading.value
               ? const Center(
-                  child: SingleChildScrollView(),
+                  child: CircularProgressIndicator(color: primaryColor,),
                 )
-              : ListView.separated(
-                  itemCount: controller.allOrders.length,
-                  separatorBuilder: (BuildContext context, int index) =>
-                      const SizedBox(
-                    width: 18,
+              : controller.allOrders.isEmpty?  Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const SizedBox(
+                height: 20,
+              ),
+              SizedBox(
+                width: deviceWidth ,
+                child:const Center(
+                  child:  Text(
+                    'There is no orders yet.',
+                    style: TextStyle(
+                      fontSize: 22,
+                      color: inProgressColor,
+                    ),
                   ),
-                  itemBuilder: (context, index) {
-                    return _customListTile(controller.allOrders[index]);
-                  },
                 ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(20),
+                child: SvgPicture.asset(
+                  'assets/images/no_orders.svg',
+                  width: deviceWidth * .8,
+                  height: deviceHeight * .6,
+                ),
+              )
+            ],
+          ) :
+                  ListView.separated(
+                    itemCount: controller.allOrders.length,
+                    separatorBuilder: (BuildContext context, int index) =>
+                        const SizedBox(
+                      width: 18,
+                    ),
+                    itemBuilder: (context, index) {
+                      return _customListTile(controller.allOrders[index]);
+                    },
+                  )
+                ,
         ),
       ),
     );

@@ -30,6 +30,7 @@ class CustomTextFormField extends StatelessWidget {
           color: Colors.grey,
         ),
         TextFormField(
+          cursorColor: primaryColor,
           validator: onValidate as String? Function(String?),
           onSaved: onSave as void Function(String?)?,
           textInputAction: TextInputAction.next,

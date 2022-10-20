@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import '../services/firestore_user.dart';
 import '../services/firestore_user_orders.dart';
 import '../../model/cart_product_model.dart';
@@ -13,6 +14,9 @@ class OrdersHistoryViewModel extends GetxController {
 
   List<OrderModel> _allOrders = [];
   List<OrderModel> get allOrders => _allOrders;
+
+  ValueNotifier<bool> _isLoading = ValueNotifier(false);
+  ValueNotifier<bool> get isLoading => _isLoading;
 
   OrdersHistoryViewModel(){
     getOrderData();
@@ -31,6 +35,7 @@ class OrdersHistoryViewModel extends GetxController {
 
   getOrderData() async {
     _allOrders = [];
+    _isLoading.value = true;
     DocumentSnapshot ordersDocumentSnapshot =
         await firestoreUserOrders.getUserOrders(userID);
     Map<String, dynamic>? orderData =
@@ -50,5 +55,6 @@ class OrdersHistoryViewModel extends GetxController {
       );
     }
     update();
+    _isLoading.value = false;
   }
 }

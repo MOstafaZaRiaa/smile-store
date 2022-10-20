@@ -18,7 +18,7 @@ class SearchScreen extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
       ),
       child: TextFormField(
-        cursorColor: greyAccent,
+        cursorColor: primaryColor,
         controller: controller.searchTextController,
         style:
         const TextStyle(color: greyAccent, fontSize: 18),
@@ -51,7 +51,7 @@ class SearchScreen extends StatelessWidget {
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.only(
-              top: 30.0,
+              top: 20.0,
               left: 10,
               right: 10,
             ),

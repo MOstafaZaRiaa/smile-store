@@ -10,13 +10,15 @@ import '../../widgets/custom_text_form_field.dart';
 import '../../../constance.dart';
 
 class AddNewAddress extends StatelessWidget {
+  const AddNewAddress({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_ios_outlined,
             color: Colors.black,
           ),
@@ -25,7 +27,7 @@ class AddNewAddress extends StatelessWidget {
           },
         ),
         title: const CustomText(
-          text: 'Shipping Address',
+          text: 'New Shipping Address',
           color: Colors.black,
         ),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -56,7 +58,7 @@ class AddNewAddress extends StatelessWidget {
                           }
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 40,
                       ),
                       CustomTextFormField(
@@ -71,7 +73,7 @@ class AddNewAddress extends StatelessWidget {
                           }
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 40,
                       ),
                       CustomTextFormField(
@@ -86,7 +88,7 @@ class AddNewAddress extends StatelessWidget {
                           }
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 40,
                       ),
                       CustomTextFormField(
@@ -101,7 +103,7 @@ class AddNewAddress extends StatelessWidget {
                           }
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 40,
                       ),
                       Row(
@@ -154,6 +156,7 @@ class AddNewAddress extends StatelessWidget {
                     color: primaryColor,
                     onPressed: () {
                       controller.saveNewAddress(context);
+                      Get.back();
                     },
                   ),
                 ),

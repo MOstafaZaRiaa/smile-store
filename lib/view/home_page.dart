@@ -22,6 +22,7 @@ class HomePage extends StatelessWidget {
       autoRemove: false,
       init: HomeViewModel(),
       builder: (controller) => RefreshIndicator(
+        color: primaryColor,
         onRefresh: () async {
           await controller.onRefresh();
         },
@@ -43,7 +44,7 @@ class HomePage extends StatelessWidget {
                     },
                     icon: const Icon(
                       Icons.search_rounded,
-                      color: Colors.black,
+                      color: primaryColor,
                     ))
               ],
             ),
