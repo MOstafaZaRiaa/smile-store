@@ -41,7 +41,9 @@ class ShippingAddressScreen extends StatelessWidget {
           init: SavedAddressViewModel(),
           builder: (controller) => controller.isLoading.value
               ? const Center(
-                  child: CircularProgressIndicator(),
+                  child: CircularProgressIndicator(
+                    color: primaryColor,
+                  ),
                 )
               : controller.addressModel.isEmpty
                   ? Center(

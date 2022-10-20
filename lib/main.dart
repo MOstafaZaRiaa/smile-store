@@ -23,6 +23,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      theme:  ThemeData(
+        colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Color(0xFF00C569)),
+
+      ),
       title: 'E-Commerce App',
       debugShowCheckedModeBanner: false,
       initialBinding: Binding(),

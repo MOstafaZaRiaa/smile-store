@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:ecommerce_app/core/view_model/profile_view_model.dart';
+
 import '../services/firestore_user.dart';
 import '../../helper/local_storage_data.dart';
 import '../../model/user_model.dart';
@@ -15,9 +17,12 @@ class ProfileImageViewModel extends GetxController {
   late File _image;
   final picker = ImagePicker();
 
+  //make instance of class gets data because its in the constructor
+  final getUserData = ProfileViewModel().getUserData() ;
+
 
   Future getCameraImage(BuildContext context,UserModel userModel) async {
-    final pickedFile = await picker.getImage(source: ImageSource.camera);
+    final pickedFile = await picker.pickImage(source: ImageSource.camera);
     if (pickedFile != null) {
       _image = File(pickedFile.path);
       var imageLink = await fireStoreUser.uploadImageToFirestore(userModel.userId!, _image);
@@ -30,13 +35,14 @@ class ProfileImageViewModel extends GetxController {
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('No image selected.'),
+          content: const Text('No image selected.'),
           backgroundColor: Theme.of(context).errorColor,
         ),
       );
     }
+    updateUserImage(context);
+    await getUserData;
     update();
-    Navigator.pop(context);
   }
 
   Future getGalleryImage(BuildContext context, UserModel userModel) async {
@@ -53,14 +59,14 @@ class ProfileImageViewModel extends GetxController {
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('No image selected.'),
+          content: const Text('No image selected.'),
           backgroundColor: Theme.of(context).errorColor,
         ),
       );
     }
+    await getUserData;
     updateUserImage(context);
     update();
-    Navigator.pop(context);
   }
 
   updateUserImage(BuildContext context) async {

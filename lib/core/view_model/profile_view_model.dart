@@ -73,6 +73,7 @@ class ProfileViewModel extends GetxController {
         ),
       );
     }
+    await getUserData();
     update();
   }
 
@@ -116,7 +117,6 @@ class ProfileViewModel extends GetxController {
   //   update();
   // }
   clearCartFromProducts(){
-
     dbHelper.clearCart();
   }
 

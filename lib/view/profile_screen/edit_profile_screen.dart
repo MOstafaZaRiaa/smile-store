@@ -43,15 +43,14 @@ class EditProfileScreen extends StatelessWidget {
                 ),
                 onPressed: () {
                   controller.keyForm.currentState!.save();
-                  controller.updateUserData(
-                      UserModel(
+                  controller.updateUserData(UserModel(
                         name: controller.newUsername,
                         email: controller.newEmail,
                         userId: controller.userModel!.userId,
                         userPic: controller.userModel!.userPic,
-                      ),
-                      context);
-                })
+                      ),context,);
+
+                },),
           ],
         ),
         body: SingleChildScrollView(
