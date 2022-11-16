@@ -149,7 +149,7 @@ class AddNewAddress extends StatelessWidget {
                     right: 20,
                     bottom: 10,
                     top: 40,
-                    left: MediaQuery.of(context).size.width * .6,
+                    left: MediaQuery.of(context).size.width * .4,
                   ),
                   child: CustomButton(
                     text: 'ADD',

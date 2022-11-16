@@ -52,6 +52,9 @@ dependencies:
   intl: ^0.17.0
   flutter_offline: ^2.1.0
   carousel_slider: ^4.1.1
+  geolocator: ^9.0.2
+  google_maps_flutter: ^2.2.1
+  flutter_stripe: ^6.0.0
 
 
 

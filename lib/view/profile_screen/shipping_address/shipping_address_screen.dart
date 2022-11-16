@@ -67,7 +67,7 @@ class ShippingAddressScreen extends StatelessWidget {
                                 ),
                               ),
                               onPressed: () {
-                                Get.to(() => AddNewAddress());
+                                Get.to(() => const AddNewAddress());
                               },
                             ),
                           ],
@@ -176,7 +176,7 @@ class ShippingAddressScreen extends StatelessWidget {
                                 text: 'New',
                                 color: primaryColor,
                                 onPressed: () {
-                                  Get.to(() => AddNewAddress());
+                                  Get.to(() => const AddNewAddress());
                                 },
                               ),
                             ),

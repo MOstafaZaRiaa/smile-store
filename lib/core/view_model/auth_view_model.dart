@@ -15,9 +15,9 @@ import '../../model/user_model.dart';
 import '../../view/control_view.dart';
 
 class AuthViewModel extends GetxController {
-  GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email']);
-  FacebookAuth _facebookLogin = FacebookAuth.instance;
-  FirebaseAuth _auth = FirebaseAuth.instance;
+  final GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email']);
+  final FacebookAuth _facebookLogin = FacebookAuth.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   String? email, password, name;
 
   LocalStorageData localStorageData = Get.find();
